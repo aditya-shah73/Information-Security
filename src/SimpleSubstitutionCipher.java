@@ -53,13 +53,13 @@ public class SimpleSubstitutionCipher
 	public static void main(String args[])
 	{
 		Scanner in = new Scanner(System.in);
-		System.out.println("Enter a string: ");
+		System.out.println("Enter a string: "); //The encrypted text to be entered by the user
 		String s = in.nextLine();
 		String result1 = "";
 		String result2 ="";
 		result1 = compressed(s);
 		System.out.println(result1);
-		System.out.println("Enter a putative key: ");
+		System.out.println("Enter a putative key: "); // A key that is guessed by the user
 		int a = in.nextInt();
 		result2 = key(s,a);
 		System.out.println(result2);	
