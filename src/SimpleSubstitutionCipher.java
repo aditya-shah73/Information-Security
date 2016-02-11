@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class SimpleSubstitutionCipher 
 {
-	public static String compressed(String s)
-	{
+	public static String characterFrequency(String s)
+	{	 
+		s = s.toUpperCase();// Change the input string to upper case to maintain consistency
 		char ch;
 		String compress = "";
-		HashMap<Character, Integer> h = new HashMap<Character, Integer>();
+		HashMap<Character, Integer> h = new HashMap<Character, Integer>(); //Maps the characters to the character count
 
 		for(int i=0;i<s.length();i++)
 		{
@@ -34,12 +35,13 @@ public class SimpleSubstitutionCipher
 	
 	public static String key(String s, int key)
 	{
+		s = s.toUpperCase();// Change the input string to upper case to maintain consistency
 		char ch;
 		String r = "";
 		for(int i=0;i<s.length();i++)
 		{
 			ch = s.charAt(i);
-			int a = 55 + Character.getNumericValue(ch);
+			int a = 55 + Character.getNumericValue(ch); //converting the characters of the cipher text to ASCII
 			a -= key;
 			if(a < 64)
 			{
@@ -53,15 +55,17 @@ public class SimpleSubstitutionCipher
 	public static void main(String args[])
 	{
 		Scanner in = new Scanner(System.in);
-		System.out.println("Enter a string: "); //The encrypted text to be entered by the user
+		System.out.print("Enter the cipher text: "); //The encrypted text to be entered by the user
 		String s = in.nextLine();
 		String result1 = "";
 		String result2 ="";
-		result1 = compressed(s);
+		result1 = characterFrequency(s);
+		System.out.println("The frequency of the characters is: ");
 		System.out.println(result1);
-		System.out.println("Enter a putative key: "); // A key that is guessed by the user
+		System.out.print("Enter a putative key to decrypt the cipher text: "); // A key that is guessed by the user
 		int a = in.nextInt();
 		result2 = key(s,a);
+		System.out.println("The decrypted text could be: ");
 		System.out.println(result2);	
 	}
 }
